@@ -14,13 +14,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var collectionItems: [String] = ["plane"]
+    var collectionItems: [String] = ["plane", "cat"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene(named: "art.scnassets/cat.scn")!
         sceneView.scene = scene
         
         collectionView.delegate = self
@@ -69,7 +70,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return collectionItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
