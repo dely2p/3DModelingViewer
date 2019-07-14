@@ -14,15 +14,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var collectionItems: [String] = ["plane", "cat"]
+    var collectionItems: [String] = ["ship", "cat"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
-        
-//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        let scene = SCNScene(named: "art.scnassets/cat.scn")!
-        sceneView.scene = scene
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -78,6 +74,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.modelImageView.image = UIImage(named: collectionItems[indexPath.row])
         cell.modelLabel.text = collectionItems[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = collectionItems[indexPath.row]
+        let scene = SCNScene(named: "art.scnassets/\(item).scn")!
+        sceneView.scene = scene
     }
     
     func collectionView(_ collectionView: UICollectionView,
