@@ -13,14 +13,17 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
-        sceneView.showsStatistics = true
         
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         sceneView.scene = scene
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
